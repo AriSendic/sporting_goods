@@ -1,0 +1,7 @@
+<h1>Welcome to Ball City</h1>
+<% @products.each do |product| %>
+  <p><%= product.description %></p>
+  <p ><%= product.name %></p>
+  <p >$<%= product.price %></p>
+  <p><%= image_tag product.image %></p>
+<% end %>
