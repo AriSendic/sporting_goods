@@ -1,10 +1,12 @@
 <h1>Welcome to Ball City</h1>
-<div>
-<a href="/products/new">Create a new product</a>
+<div class="center">
+<a href="/products/new" class="btn btn-primary btn-lg active" role="button">Create a new product</a>
+
 </div>
 <% @products.each do |product| %>
+  <p><%= image_tag product.image %></p>
   <p><%= product.description %> <a href="/products/<%=product.id %>"><%= product.name %></a></p>
   <p>$<%= product.price %></p>
-  <p><%= image_tag product.image %></p>
+  <br>
 <% end %>
 

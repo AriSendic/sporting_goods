@@ -2,8 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+h2.center {text-align: center}
+div.center {text-align: center}
 h1 {color:green; text-align:center}
 img {width:200px;}
-body {background-color: yellow;}
+body {
+  background-color: #F5DEB3;
+    padding: 0.5cm;
+}
 

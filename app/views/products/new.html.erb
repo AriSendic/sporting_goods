@@ -1,4 +1,5 @@
 <%= form_tag '/products', method: :post do %>
+  <h2 class="center">New Product<h2>
   <div class="form-group">
     <%= label_tag :description, 'Please enter the brand:' %>
     <%= text_field_tag :description, '', class: "form-control" %>
