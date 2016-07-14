@@ -1,17 +1,25 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+a.navbar-brand {
+  font-family: 'Permanent Marker', cursive;
+}
 
-h2.center {text-align: center}
-div.center {text-align: center}
-h1 {color:green; text-align:center}
+.center {
+  text-align: center
+}
+
+h1 {
+  color:green; text-align:center
+}
+
 .well img {
   width: 100%;
 }
-body {
 
-background-image: image-url('wood_pattern.png');
- font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+body {
+  background-image: image-url('wood_pattern.png');
+  font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
     padding: 0.5cm;
 }
 
