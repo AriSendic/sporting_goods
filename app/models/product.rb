@@ -12,11 +12,11 @@ class Product < ActiveRecord::Base
   end
 
   def tax
-    price.to_i * 0.09
+    price.to_f * 0.09
   end
   
   def total
-    price.to_i + tax
+    price.to_f + tax
   end
 
   
