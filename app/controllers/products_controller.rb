@@ -27,7 +27,6 @@ class ProductsController < ApplicationController
   
   def edit
     @product = Product.find_by(id: params['id'])
-    # coming from url
     render 'edit.html.erb'
   end 
   

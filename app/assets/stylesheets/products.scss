@@ -5,9 +5,13 @@
 h2.center {text-align: center}
 div.center {text-align: center}
 h1 {color:green; text-align:center}
-img {width:200px;}
+.well img {
+  width: 100%;
+}
 body {
-  background-color: #F5DEB3;
+
+background-image: image-url('wood_pattern.png');
+ font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
     padding: 0.5cm;
 }
 
