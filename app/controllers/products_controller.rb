@@ -1,8 +1,27 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    sort = params[:sort]
+    order = params[:order]
+    if params[:search_terms]
+      @products = Product.where("name LIKE ?", "%#{params[:search_terms]}%")
+    elsif sort == "price"
+      if order == nil
+        @products = Product.order(:price)
+      elsif order == "desc"
+        @products = Product.order(price: :desc)
+      end
+    elsif sort == "discount"
+      @products = Product.where("price < ?", 40)
+    else
+      @products = Product.all
+    end
     render 'index.html.erb'
   end
+ #   if params[:sort_attribute] && params[:sort_order]
+ #       @products = Product.order(params[:sort_attribute] => params[:sort_order])
+ #     else
+ #       @products = Product.all
+ #     end
   
   def new
     render 'new.html.erb'
@@ -21,9 +40,13 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find_by(id: params['id'])
+    if params[:id] == 'random'
+      @product = Product.all.sample
+    else
+      @product = Product.find_by(id: params['id'])
+    end
     render 'show.html.erb'
-  end
+  end 
   
   def edit
     @product = Product.find_by(id: params['id'])

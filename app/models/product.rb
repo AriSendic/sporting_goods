@@ -2,13 +2,9 @@ class Product < ActiveRecord::Base
   def friendly_time
     created_at.strftime('%A, %b %d')
   end
-  
-  def sale_message
-    if price.to_i > 40
-      "Discount Item!" 
-    else
-      "On Sale!"  
-    end
+ 
+  def discounted?
+    price.to_f < 40   
   end
 
   def tax

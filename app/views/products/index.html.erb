@@ -3,16 +3,19 @@
 <a href="/products/new" class="btn btn-primary btn-lg active" role="button">Create a new product</a>
 
 </div>
-<div class="row">
-<% @products.each do |product| %>
-   <div class="col-md-4">
-     <div class="well">
-      <p><%= image_tag product.image %></p>
-      <p><%= product.description %> <a href="/products/<%=product.id %>"><%= product.name %></a></p>
-      <p>$<%= product.price %></p>
-      <p>Updated <%= product.friendly_time %></p>
-    </div>  
-  </div>
-<% end %>
-</div> 
 
+<% @products.each_slice(3) do |three_products| %>  
+  <div class="row">
+    <% three_products.each do |product| %>
+      <div class="col-md-4">
+        <div class="well">
+          <p><%= image_tag product.image %></p>
+          <p><%= product.description %> <a href="/products/<%=product.id %>"><%= product.name %></a></p>
+
+          <p><%= number_to_currency(product.price) %></p>
+          <p>Updated <%= product.friendly_time %></p>
+        </div>  
+      </div>
+    <% end %>
+  </div> 
+<% end %>

@@ -1,7 +1,10 @@
 <p> <%= image_tag @product.image %></p>
 <p><%= @product.description %> <%= @product.name %></p>
-<p>$<%= @product.price %></p>
-<p><%= @product.sale_message %></p>
+<p><% if @product.discounted? %>
+      <p class="discount"><%= number_to_currency(@product.price) %></p>
+    <% else %>
+      <p><%= number_to_currency(@product.price) %></p>
+    <% end %>  
 <p>Tax <%= number_to_currency(@product.tax) %></p>
 <p>Total <%= number_to_currency(@product.total) %></p>
 <div>
