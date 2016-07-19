@@ -1,5 +1,8 @@
-<p> <%= image_tag @product.image %></p>
+ <% @product.images.each do |image| %>
+<%= image_tag image.url %>
+<%end%>
 <p><%= @product.description %> <%= @product.name %></p>
+<h4><%= @product.supplier.name %></h4>
 <p><% if @product.discounted? %>
       <p class="discount"><%= number_to_currency(@product.price) %></p>
     <% else %>

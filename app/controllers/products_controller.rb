@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
     sort = params[:sort]
     order = params[:order]
     if params[:search_terms]
-      @products = Product.where("name LIKE ?", "%#{params[:search_terms]}%")
+      @products = Product.where("name LIKE ? OR description LIKE ?", "%#{params[:search_terms]}%", "%#{params[:search_terms]}%")
     elsif sort == "price"
       if order == nil
         @products = Product.order(:price)

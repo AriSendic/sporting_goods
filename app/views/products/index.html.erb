@@ -9,8 +9,8 @@
     <% three_products.each do |product| %>
       <div class="col-md-4">
         <div class="well">
-          <p><%= image_tag product.image %></p>
-          <p><%= product.description %> <a href="/products/<%=product.id %>"><%= product.name %></a></p>
+          <p><%= image_tag product.images.first.url %></p>
+          <p><a href="/products/<%=product.id %>"><%= product.description %> <%= product.name %></a></p>
 
           <p><%= number_to_currency(product.price) %></p>
           <p>Updated <%= product.friendly_time %></p>
