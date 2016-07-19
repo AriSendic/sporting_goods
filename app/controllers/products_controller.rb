@@ -31,8 +31,7 @@ class ProductsController < ApplicationController
     product = Product.new(
       description: params['description'],
       name: params['name'],
-      price: params['price'],
-      image: params['image']
+      price: params['price']
     )
     product.save
     flash[:success] = "Product successfully added"
@@ -58,8 +57,7 @@ class ProductsController < ApplicationController
     product.update(
       description: params['description'],
       name: params['name'],
-      price: params['price'],
-      image: params['image']
+      price: params['price']
     )
     flash[:success] = "Product successfully updated"
     redirect_to "/products/#{product.id}"
