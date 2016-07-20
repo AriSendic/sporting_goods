@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
   def new
+    @product = Product.find_by(id: params[:product_id])
     render 'new.html.erb'
   end
 
@@ -10,6 +11,6 @@ class ImagesController < ApplicationController
     )
     x.save
     flash[:success] = "Image successfully added"
-    redirect_to "/products/#{x.product_id}"
+    redirect_to "/products/#{params[:product_id]}"
   end  
 end

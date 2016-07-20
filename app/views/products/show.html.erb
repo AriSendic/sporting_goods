@@ -17,5 +17,8 @@
 <a href="/products">Back to the main page</a>
 </div>
 <div>
+<a href="/products/<%=@product.id%>/images/new">Add an image</a>
+</div>
+<div>
 <%= link_to "Delete this product", "/products/#{@product.id}", method: :delete %>
 </div>
