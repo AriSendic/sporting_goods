@@ -12,10 +12,12 @@ class OrdersController < ApplicationController
       total: total_price + total_tax
     ) 
     order.save
+    flash[:success] = 'Order submitted'
     redirect_to "/orders/#{order.id}"
   end
    
   def show
     @order = Order.find_by(id: params['id'])
+    # render 'show.html.erb' works automatically because of its name
   end
 end
