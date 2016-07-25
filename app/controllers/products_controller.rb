@@ -1,7 +1,9 @@
 class ProductsController < ApplicationController
+  
   def index
     sort = params[:sort]
     order = params[:order]
+    category = params[:category]
     if params[:search_terms]
       @products = Product.where("name LIKE ? OR description LIKE ?", "%#{params[:search_terms]}%", "%#{params[:search_terms]}%")
     elsif sort == "price"
@@ -12,6 +14,8 @@ class ProductsController < ApplicationController
       end
     elsif sort == "discount"
       @products = Product.where("price < ?", 40)
+    elsif params[:category]
+      @products = Category.find_by(name: params[:category]).products
     else
       @products = Product.all
     end

@@ -1,3 +1,4 @@
+
  <% @product.images.each do |image| %>
 <%= image_tag image.url %>
 <%end%>
@@ -10,16 +11,19 @@
     <% end %>  
 <p>Tax <%= number_to_currency(@product.tax) %></p>
 <p>Total <%= number_to_currency(@product.total) %></p>
+<h4>Categories: </h4><% @product.categories.each do |category|%>
+<%= category.name + ", "%>
+<%end%> 
 <h2>Make an Order!</h2>
-<%= form_tag '/orders', method: :post do %>
+<%= form_tag '/cart', method: :post do %>
  <div>
  <%= label_tag :quantity %>
     <%= text_field_tag :quantity %>
 </div>
-
+<%= hidden_field_tag :status, 'carted'%>
 <%= hidden_field_tag :product_id, @product.id %>
 
-<%= submit_tag "Place order" %>
+<%= submit_tag "Add to Cart" %>
 </div>
 <% end %>
 <div>
