@@ -1,0 +1,13 @@
+<h2>Here is your cart<h2> 
+<% @products.each do|carted|%>
+<p><%= carted.product.name%><p>
+ <p><%= number_to_currency(carted.product.price) %></p>
+<p></p>
+<%end%>
+
+<%= form_tag '/orders', method: :post do %>
+<div>
+<%= hidden_field_tag :user_id, current_user.id %> 
+<%= submit_tag "Checkout" %>
+</div>
+<%end%>
