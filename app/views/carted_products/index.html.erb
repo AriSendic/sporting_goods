@@ -2,12 +2,22 @@
 <% @products.each do|carted|%>
 <p><%= carted.product.name%><p>
  <p><%= number_to_currency(carted.product.price) %></p>
-<p></p>
+<p>Quantity: <%= carted.quantity%></p>
+<div>
+<%= form_tag "/cart", method: :patch do %>
+<%=hidden_field_tag :status,'removed' %>
+<%=hidden_field_tag :id, carted.id %>
+<%= submit_tag 'Remove from cart' %>
+</div>
 <%end%>
-
+<%end%>
+<% if CartedProduct.where(status: "carted", user_id: current_user.id).count>0 %>
 <%= form_tag '/orders', method: :post do %>
 <div>
 <%= hidden_field_tag :user_id, current_user.id %> 
 <%= submit_tag "Checkout" %>
 </div>
+<%end%>
+<%else%>
+<h5> Oh man! It's empty! <a href="/">Back inside:</a> </h5> 
 <%end%>

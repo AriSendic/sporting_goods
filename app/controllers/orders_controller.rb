@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
       carted.save
     end
 
-
+    
     flash[:success] = 'Order submitted'
     redirect_to "/orders/#{order.id}"
   end

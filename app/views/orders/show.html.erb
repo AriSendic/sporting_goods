@@ -3,7 +3,7 @@
 <p>Order id: <%= @order.id %></p>
 <% @order.carted_products.each do |carted| %>
 <%=carted.product.name%>
-<p>Quantity<%=carted.quantity%></p>
+<p>Quantity: <%=carted.quantity%></p>
 <% end %>
 
 
