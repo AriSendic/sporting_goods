@@ -15,7 +15,12 @@ class CartedProductsController < ApplicationController
   
   def index
     @products = CartedProduct.where(status: "carted", user_id: current_user.id)
-    render 'index.html.erb'
+    if @products.length > 0
+      render 'index.html.erb'
+    else
+      flash[:warning] = "You have no items in your shopping cart! TIME TO SPEND!"
+      redirect_to '/'
+    end
   end  
   
   def destroy

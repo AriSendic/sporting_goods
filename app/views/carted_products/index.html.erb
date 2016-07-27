@@ -10,13 +10,10 @@
 </div>
 <%end%>
 <%end%>
-<% if CartedProduct.where(status: "carted", user_id: current_user.id).count>0 %>
 <%= form_tag '/orders', method: :post do %>
 <div>
 <%= hidden_field_tag :user_id, current_user.id %> 
 <%= submit_tag "Checkout" %>
 </div>
 <%end%>
-<%else%>
-<h5> Oh man! It's empty! <a href="/">Back inside:</a> </h5> 
-<%end%>
+
