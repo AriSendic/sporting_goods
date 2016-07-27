@@ -19,7 +19,7 @@
 <%= form_tag '/cart', method: :post do %>
  <div>
  <%= label_tag :quantity %>
-    <%= text_field_tag :quantity %>
+    <%= text_field_tag :quantity, 1 %>
 </div>
 <%= hidden_field_tag :product_id, @product.id %>
 <%= submit_tag "Add to Cart" %>
