@@ -51,12 +51,9 @@
         <% if current_user == nil %>
         <li><a href="/signup">Signup</a></li>
         <li><a href="/login">Log in</a></li>
-        <%elsif current_user and CartedProduct.where(status: "carted", user_id: current_user.id).count>0%>
-        <li><a href="/cart">Checkout</a></li>
+        <%else%>
+        <li><a href="/cart">Checkout(<%=@cart_count%>)</a></li>
         <li><a href="/logout">Log out</a></li>
-        <% else %>
-        <li><a href="/logout">Log out</a></li>
-        <li><a href="/">Checkout</a></li>
         <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>

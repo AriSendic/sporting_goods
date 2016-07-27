@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_user!
   def create
     products = CartedProduct.where(status: "carted", user_id: current_user.id)
     subtotal = 0
