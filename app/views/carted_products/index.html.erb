@@ -5,7 +5,6 @@
 <p>Quantity: <%= carted.quantity%></p>
 <div>
 <%= form_tag "/cart", method: :patch do %>
-<%=hidden_field_tag :status,'removed' %>
 <%=hidden_field_tag :id, carted.id %>
 <%= submit_tag 'Remove from cart' %>
 </div>

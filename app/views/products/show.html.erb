@@ -14,27 +14,29 @@
 <h4>Categories: </h4><% @product.categories.each do |category|%>
 <%= category.name + ", "%>
 <%end%> 
+<%if current_user%>
 <h2>Make an Order!</h2>
 <%= form_tag '/cart', method: :post do %>
  <div>
  <%= label_tag :quantity %>
     <%= text_field_tag :quantity %>
 </div>
-<%= hidden_field_tag :status, 'carted'%>
 <%= hidden_field_tag :product_id, @product.id %>
-<%= hidden_field_tag :user_id, current_user.id %> 
 <%= submit_tag "Add to Cart" %>
 </div>
 <% end %>
+<%end%>
+<% if current_user && current_user.admin%>
 <div>
 <a href="/products/<%=@product.id%>/edit">Edit this product</a>
-</div>
-<div>
-<a href="/products">Back to the main page</a>
 </div>
 <div>
 <a href="/products/<%=@product.id%>/images/new">Add an image</a>
 </div>
 <div>
 <%= link_to "Delete this product", "/products/#{@product.id}", method: :delete %>
+</div>
+<%end%>
+<div>
+<a href="/products">Back to the main page</a>
 </div>

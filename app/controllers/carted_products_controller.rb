@@ -1,10 +1,12 @@
 class CartedProductsController < ApplicationController
+  before_action :authenticate_user!
+  
   def create
     product = CartedProduct.new(
-      user_id: params['user_id'],
+      user_id: current_user.id,
       product_id: params['product_id'],
       quantity: params['quantity'],
-      status: params['status']
+      status: 'carted'
     )
     product.save
     flash[:success] = "successfully added to cart"
@@ -18,7 +20,7 @@ class CartedProductsController < ApplicationController
   
   def destroy
     cp = CartedProduct.find_by(id: params['id'])
-    cp.update(status: params[:status])
+    cp.update(status: "removed")
     flash[:success] = "Product successfuly removed"
     redirect_to "/cart"
   end
