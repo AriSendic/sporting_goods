@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
       description: params['description'],
       name: params['name'],
       price: params['price'],
-      supplier_id: params['supplier_id:']
+      supplier_id: params['supplier_id']
     )
     if @product.save
       flash[:success] = "Product successfully added"

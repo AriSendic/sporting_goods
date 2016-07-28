@@ -17,13 +17,7 @@ class OrdersController < ApplicationController
     )
     order.save
     session[:cart_count] = nil
-    products.each do |carted|
-      carted.status = "purchased"
-      carted.order_id = order.id
-      carted.save
-    end
-
-    
+    products.update_all(status: "purchased", order_id: order.id)
     flash[:success] = 'Order submitted'
     redirect_to "/orders/#{order.id}"
   end
