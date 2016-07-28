@@ -11,10 +11,7 @@
 <% end %>
 
 <h1>Edit Product</h1>
-<%= form_tag "/products/#{@product.id}", method: :patch do %>
-<%= render "form" %>
+
+<%= render "form", url: "/products/#{@product.id}", verb: :patch %>
   
-  <div class="btn btn-default">
-    <%= submit_tag 'Submit Changes' %>
-  </div>
-<% end %>
+  

@@ -10,9 +10,6 @@
   </div>
 <% end %>
  <h2 class="center">New Product<h2>
-<%= form_tag '/products', method: :post do %>
-<%= render "form" %>
-  <div class="btn btn-default">
-    <%= submit_tag 'Submit Product!' %>
-  </div>
-<% end %>
+
+<%= render "form", url: "/products", verb: :post %>
+  
