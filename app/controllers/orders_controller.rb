@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
       total: tax + subtotal
     )
     order.save
-   
+    session[:cart_count] = nil
     products.each do |carted|
       carted.status = "purchased"
       carted.order_id = order.id

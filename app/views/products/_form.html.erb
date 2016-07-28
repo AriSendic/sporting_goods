@@ -1,18 +1,4 @@
-<% if @product.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
- 
-    <ul>
-    <% @product.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
- <h2 class="center">New Product<h2>
-<%= form_tag '/products', method: :post do %>
- <%= render "form" %>
-<!--   <div class="form-group">
+  <div class="form-group">
     <%= label_tag :description, 'Please enter the description:'%>
     <%= text_field_tag :description, @product.description , class: "form-control" %>
   </div>
@@ -27,8 +13,4 @@
   <div class="form-group">
     <%= label_tag :supplier_id, 'Please enter the supplier_id:' %>
     <%= text_field_tag :supplier_id, @product.supplier_id, class: "form-control"  %>
-  </div> -->
-  <div class="btn btn-default">
-    <%= submit_tag 'Submit Product!' %>
   </div>
-<% end %>

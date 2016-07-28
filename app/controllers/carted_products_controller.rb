@@ -9,8 +9,10 @@ class CartedProductsController < ApplicationController
       status: 'carted'
     )
     product.save
+    session[:cart_count] = nil
     flash[:success] = "successfully added to cart"
     redirect_to "/cart"
+
   end
   
   def index
@@ -27,6 +29,7 @@ class CartedProductsController < ApplicationController
     cp = CartedProduct.find_by(id: params['id'])
     cp.update(status: "removed")
     flash[:success] = "Product successfuly removed"
+    session[:cart_count] = nil
     redirect_to "/cart"
   end
 

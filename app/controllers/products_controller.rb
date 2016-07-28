@@ -29,29 +29,24 @@ class ProductsController < ApplicationController
  #     end
   
   def new
-    if current_user
-      render 'new.html.erb'
-    else
-      redirect_to "/"
-    end  
-  end
-  
+    @product = Product.new
+    render 'new.html.erb'  
+  end  
+
   def create
-    if current_user
-      product = Product.new(
-        description: params['description'],
-        name: params['name'],
-        price: params['price']
-      )
-      if product.save
-        flash[:success] = "Product successfully added"
-        redirect_to "/products/#{product.id}"
-      else
-        render 'new.html.erb'
-      end      
+    @product = Product.new(
+      description: params['description'],
+      name: params['name'],
+      price: params['price'],
+      supplier_id: params['supplier_id:']
+    )
+    if @product.save
+      flash[:success] = "Product successfully added"
+      redirect_to "/products/#{@product.id}"
     else
-      redirect_to "/"
-    end
+      render 'new.html.erb'
+    end      
+    
   end
 
   def show
@@ -64,38 +59,30 @@ class ProductsController < ApplicationController
   end 
   
   def edit
-    if current_user
-      @product = Product.find_by(id: params['id'])
-      render 'edit.html.erb'
-    else
-      redirect_to "/"  
-    end  
+    @product = Product.find_by(id: params['id'])
+    render 'edit.html.erb'
   end 
   
   def update
-    if current_user
-      product = Product.find_by(id: params['id'])
-      product.update(
-        description: params['description'],
-        name: params['name'],
-        price: params['price']
-      )
+    @product = Product.find_by(id: params['id'])
+    if @product.update(
+      description: params['description'],
+      name: params['name'],
+      price: params['price'],
+      supplier_id: params['supplier_id']
+    )
       flash[:success] = "Product successfully updated"
-      redirect_to "/products/#{product.id}"
+      redirect_to "/products/#{@product.id}"
     else
-      redirect_to "/"
-    end
+      render 'edit.html.erb'
+    end   
   end  
   
   def destroy
-    if current_user
-      @product = Product.find_by(id: params['id'])
-      @product.destroy
-      flash[:success] = "Product successfuly deleted"
-      redirect_to "/products"
-    else
-      redirect_to "/"
-    end
+    @product = Product.find_by(id: params['id'])
+    @product.destroy
+    flash[:success] = "Product successfuly deleted"
+    redirect_to "/products"
   end
 
   
